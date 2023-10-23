@@ -119,8 +119,6 @@ def create_train_test_sets(data_train, data_test, solar=False, wind=False):
     y_train, y_test = y_train.reset_index().drop(['DateTime'], axis=1), y_test.reset_index().drop(['DateTime'], axis=1)
     return X_train, X_test, y_train, y_test
 
-#def get_autocorrelation_of_lags():
-
 
 def convert_to_supervised(data, n_in=1, n_out=1, dropnan=False, replacenan=True):
     """
@@ -152,13 +150,13 @@ def convert_to_supervised(data, n_in=1, n_out=1, dropnan=False, replacenan=True)
     return agg
 
 
-def plot_time_series(data_train, data_test):
-    fig, ax = plt.subplots(figsize=(12, 4))
-    data_train.ALLOCATION.plot(ax=ax, label='train', linewidth=1)
-    data_test.ALLOCATION.plot(ax=ax, label='test', linewidth=2, ls='-.')
-    ax.set_title('Data to be used')
-    ax.legend()
-    return ax
+# def plot_time_series(data_train, data_test):
+#     fig, ax = plt.subplots(figsize=(12, 4))
+#     data_train.ALLOCATION.plot(ax=ax, label='train', linewidth=1)
+#     data_test.ALLOCATION.plot(ax=ax, label='test', linewidth=2, ls='-.')
+#     ax.set_title('Data to be used')
+#     ax.legend()
+#     return ax
 
 
 def tune_model(X_train, y_train):
@@ -253,5 +251,3 @@ if __name__ == '__main__':
     plt.title("Predictions vs Observations vs Ebase")
     plt.legend()
     plt.show()
-
-    # Create dataframe for predictions - this data can be sent back to ebase (make it a function)
