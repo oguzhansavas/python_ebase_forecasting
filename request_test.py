@@ -48,15 +48,11 @@ q{ timeSeries(
       value
     }
   }
-}"""
+}
+"""
  
 response = requests.post(url=url, json={"query": body})
 if response.status_code == 200:
-	json_data = json.loads(response.content)
-	meter_df = data_preprocessing(json_data)
-else:
-	raise Exception("Error occured during query, response status code:" response.status_code)
-
-
-# if response.status_code == 200:
-#     print("response : ", response.content)
+    print("response : ", response.content)
+json_data = json.loads(response.content)
+meter_df = data_preprocessing(json_data)
